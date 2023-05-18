@@ -20,8 +20,42 @@
  * print out the sum of their ages using calculateAge() method
  */
 class Person {
-  // continue the code here
+  firstName = " ";
+  lastName = "";
+  gender = "";
+  birthYear = 0 ;
+  
+  constructor(firstName,lastName,gender,birthYear) {
+    this.firstName = firstName
+    this.lastName = lastName
+    this.gender = gender
+    this.birthYear = birthYear
+
+
+
+
+  };
+
+  printName = () => {
+    console.log(this.firstName+  " " + this.lastName);
+
+  }
+
+  calculateAge = (currentYear) => {
+    currentYear = currentYear - this.birthYear
+    console.log(currentYear) 
+
+  }
+  
 }
+
+
+
+
+const newName = new Person("Mohammad", "ALQATAMI","Male",1998);
+
+newName.printName()
+newName.calculateAge(2023)
 
 /** (Question 2): (15000 Points)
  * 1. Write a class `Movie`, give it the following properties
@@ -45,9 +79,28 @@ class Person {
  */
 
 class Movie {
-  // continue the code here
-}
+  constructor(title,duration,genre,rating){
+    this.title = title
+    this.duration = duration
+    this.genre = genre
+    this.rating = rating
+  }
 
+  rate = (newRating) => {
+    if(newRating > 0 && newRating < 10 ) {
+      this.rating.push(newRating)
+      console.log(newRating)
+    }
+    
+  }
+  averageRating = (calcAverage) => {
+    calcAverage = this.rating.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    console.log(calcAverage/ this.rating.length);
+    
+  }
+}
+const newRate = new Movie("agag",120,"genree",[8,7,8,7])
+newRate.averageRating()
 /** (Question 3): (1000 Points)
  * 1. Create a class `Actor` that inherits `Person`, and adds the following properties
  * - movies: array of `Movie`
@@ -58,3 +111,21 @@ class Movie {
  */
 
 // write the class here
+
+class Actor extends Person {
+  constructor(movies,firstName,lastName,gender,birthYear){
+    super(firstName,lastName,gender,birthYear);
+    this.movies = movies
+  }
+    
+
+  addMovies = (movie) => {
+    movie = this.movies.push(movie)
+    console.log(movie)
+  }
+
+}
+
+const myActor = new Actor("nama")
+
+myActor.addMovies("nana")
